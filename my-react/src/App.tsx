@@ -7,13 +7,16 @@
 // import FtoC from "./components/FtoC";
 // import TestLoginForm from "./components/TestLoginForm";
 // import PubAndSub from "./components/PubAndSub";
-import LifeCircel from "./components/LifeCircel";
+// import LifeCircel from "./components/LifeCircel";
+// import SwiperDemo from "@/cases/swierDemo/SwiperDemo";
+// import FunctionComUseState from "./components/FunctionComUseState";
+import UseEffectTest from "@/components/UseEffectTest"
 
 function App() {
   return (
     <div className="w-full h-full">
       <div className="flex flex-col">
-        <LifeCircel></LifeCircel>
+        <UseEffectTest></UseEffectTest>
       </div>
     </div>
   );
