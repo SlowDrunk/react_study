@@ -39,7 +39,6 @@ function ListItemDom(props: ListItemDomProps) {
     )
 }
 
-
 export default function TodoListFunCom() {
     const [dataList, setDataList] = useState<ListItemI[]>([])
     const [inputValue, setInputValue] = useState<string>('')

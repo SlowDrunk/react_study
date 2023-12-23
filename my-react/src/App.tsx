@@ -10,13 +10,14 @@
 // import LifeCircel from "./components/LifeCircel";
 // import SwiperDemo from "@/cases/swierDemo/SwiperDemo";
 // import FunctionComUseState from "./components/FunctionComUseState";
-import UseEffectTest from "@/components/UseEffectTest"
+// import UseEffectTest from "@/components/UseEffectTest"
+import TodoListReducer from '@/cases/todoList/TodoListReducer'
 
 function App() {
   return (
     <div className="w-full h-full">
       <div className="flex flex-col">
-        <UseEffectTest></UseEffectTest>
+        <TodoListReducer></TodoListReducer>
       </div>
     </div>
   );
