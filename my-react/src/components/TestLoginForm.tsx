@@ -6,10 +6,15 @@ export default class TestLoginForm extends Component {
         userName: '',
         password: ''
     }
+    props: Readonly<any | null> = {};
     loginFn() {
+        console.log('loginFn', this.props)
         console.log(`用户名${this.state.userName},密码${this.state.password}`)
         localStorage.setItem('userName', this.state.userName)
         localStorage.setItem('password', this.state.password)
+        if (this.props.history) {
+            this.props.history.push('/home')
+        }
     }
     resetForm() {
         this.setState({

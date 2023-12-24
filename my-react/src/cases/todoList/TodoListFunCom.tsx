@@ -92,7 +92,7 @@ export default function TodoListFunCom() {
     </div>
     // 列表渲染
     const listDom = dataList.map((item, index) => {
-        return <ListItemDom key={item.id} deleteListItem={deleteListItem} editListItem={editListItem} switchEditListItem={switchEditListItem} completeListItem={completeListItem} id={item.id} text={item.text} completed={item.completed} editable={item.editable}></ListItemDom>
+        return <ListItemDom key={item.id} deleteListItem={deleteListItem} editListItem={editListItem} switchEditListItem={switchEditListItem} completeListItem={completeListItem} {...item}></ListItemDom>
     })
     return (
         <div className='mx-auto mt-[200px] w-[800px] px-4 py-4 flex flex-col gap-3'>
