@@ -14,15 +14,18 @@ import TestLoginForm from "./components/TestLoginForm";
 // import TodoListReducer from '@/cases/todoList/TodoListReducer'
 import ReduxCount from '@/components/ReduxCount'
 import { Provider } from 'react-redux'
-import store from './redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import store, { persistor } from './redux';
 
 function App() {
   return (
     <div className="w-full h-full">
       <div className="flex flex-col">
-        <Provider store={store}>
-          <ReduxCount></ReduxCount>
-          <TestLoginForm></TestLoginForm>
+        <Provider store={store} >
+          <PersistGate persistor={persistor}>
+            <ReduxCount></ReduxCount>
+            <TestLoginForm></TestLoginForm>
+          </PersistGate>
         </Provider>
       </div>
     </div>

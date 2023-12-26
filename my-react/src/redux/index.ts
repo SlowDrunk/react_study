@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-// import {incremented,decremented} from '@/redux/reducers/CountReducer'
+import { persistStore, persistReducer } from 'redux-persist';
 import rootReducer from './reducers';
+import persistConfig from './persistConfig';
 
-const store = configureStore({ reducer: rootReducer });
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+const store = configureStore({ reducer: persistedReducer });
+export const persistor = persistStore(store);
 export default store;

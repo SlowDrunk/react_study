@@ -1,5 +1,5 @@
-// rootReducer.js
 
+// rootReducer.js
 import { combineReducers } from '@reduxjs/toolkit';
 import counterReducer from './CountReducer';
 import userReducer from './UserReducer';
