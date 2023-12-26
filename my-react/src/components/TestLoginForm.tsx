@@ -1,35 +1,42 @@
+/* eslint-disable @typescript-eslint/no-useless-constructor */
 import React, { Component } from 'react'
+// 引入对应的Reducer
+import { setUsername, setPassword } from '@/redux/reducers/UserReducer'
+// 在类组件中使用这个方式将组件和方法连接起来
+import { connect } from 'react-redux'
 import InputCom from './InputCom'
 
-export default class TestLoginForm extends Component {
+class TestLoginForm extends Component {
+    props: any
     state = {
         userName: '',
         password: ''
     }
-    props: Readonly<any | null> = {};
     loginFn() {
-        console.log('loginFn', this.props)
-        console.log(`用户名${this.state.userName},密码${this.state.password}`)
-        localStorage.setItem('userName', this.state.userName)
-        localStorage.setItem('password', this.state.password)
-        if (this.props.history) {
-            this.props.history.push('/home')
-        }
+        this.props.setUsername(this.state.userName)
+        this.props.setPassword(this.state.password)
     }
     resetForm() {
         this.setState({
             userName: '',
             password: ''
         })
-        localStorage.removeItem('userName')
-        localStorage.removeItem('password')
     }
     render() {
+        const { username, password } = this.props as any
         return (
             <div className='w-[400px] bg-red-300 rounded-xl flex flex-col justify-center px-8 py-10 mt-[200px] mx-auto'>
                 <div className='w-full text-center mb-10 text-[20px] font-semibold'>登录表单</div>
                 <div>
+                    store数据：
+                    <div>用户名：{username}</div>
+                    <div>
+                        密码：{password}
+                    </div>
+                </div>
+                <div>
                     <InputCom label='用户名' type='text' placeholder='请输入用户名' value={this.state.userName} changeValue={(value: string) => {
+
                         this.setState({
                             userName: value
                         })
@@ -50,3 +57,17 @@ export default class TestLoginForm extends Component {
         )
     }
 }
+// mapStateToProps 将 Redux store 的状态映射到组件的属性
+const mapStateToProps = (state: any) => {
+    return {
+        username: state.user.username,
+        password: state.user.password,
+    };
+};
+
+// mapDispatchToProps 将 dispatch 函数映射到组件的属性
+const mapDispatchToProps = {
+    setUsername,
+    setPassword,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(TestLoginForm);
